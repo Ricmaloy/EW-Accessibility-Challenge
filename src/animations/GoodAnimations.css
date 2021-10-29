@@ -1,0 +1,17 @@
+@keyframes giftAnimated {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes heartAnimated {
+    0%, 100% { transform: translateY(5px); }
+    50% { transform: translateY(-15px); }
+}
+
+svg > g:nth-child(8) {
+    animation: giftAnimated 4s linear infinite;
+}
+
+svg > g:nth-child(9) {
+    animation: heartAnimated 6s linear infinite;
+}
