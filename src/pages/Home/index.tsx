@@ -1,33 +1,47 @@
-import React from 'react';
-
+import { useState } from 'react';
+import { useTabState } from 'reakit/Tab';
 import angel from '../../assets/angel.svg';
 import devil from '../../assets/devil.svg';
 
-import { Container, ContentBox, Title, Content, Good, Evil } from './styles';
+import { Container, ContentBox, Title, Tabs, TabItem, Content, ResultPainel } from './styles';
 
-const Home = () => (
+const Home = () => {
+   const tab = useTabState();
+   
+   return (
     <Container>
         <ContentBox>
-            <Title>Esse ano eu fui um(a) ...</Title>
+            <Title>Esse ano eu fui ...</Title>
             <Content>
-                <Good 
-                  href="/Good"
-                  color="#bce6eb"
+                <Tabs aria-label='Tab Panel - React Accessibility' >
 
-                >
-                    <span> bom menino / <br/> boa menina</span>
-                    <img src={angel} alt={angel} /> 
-                </Good>
-                <Evil 
-                  href="/Evil"
-                  color="#f05454"
-                >
-                    <span> menino mau / <br/> menina má </span>
-                    <img src={devil} alt={devil} /> 
-                </Evil>
+                    <TabItem
+                        id='tab-1'
+                        active={tab.selectedId === 'tab-1'}
+                        {...tab}
+                    >
+                        <span >Comportado(a)</span>
+                    </TabItem>
+                    <TabItem
+                        id='tab-2'
+                        active={tab.selectedId === 'tab-2'}
+                        {...tab}
+                    >
+                        <span> Malvado(a) </span>
+                    </TabItem>
+
+                </Tabs>
+                    <ResultPainel {...tab}>
+                        <img src={angel} alt={angel} />
+                    </ResultPainel>
+                    
+                    <ResultPainel {...tab}>
+                        <img src={devil} alt={devil} />
+                    </ResultPainel>
             </Content>
         </ContentBox>
     </Container>
-);
+   )
+};
 
 export default Home;
