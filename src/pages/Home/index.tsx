@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTabState } from 'reakit/Tab';
 import angel from '../../assets/angel.svg';
 import devil from '../../assets/devil.svg';
@@ -7,7 +6,7 @@ import { Container, ContentBox, Title, Tabs, TabItem, Content, ResultPainel } fr
 
 const Home = () => {
    const tab = useTabState();
-   
+
    return (
     <Container>
         <ContentBox>
@@ -17,6 +16,7 @@ const Home = () => {
 
                     <TabItem
                         id='tab-1'
+                        aria-label='Tab Item - Comportado ou Comportada'
                         active={tab.selectedId === 'tab-1'}
                         {...tab}
                     >
@@ -24,6 +24,7 @@ const Home = () => {
                     </TabItem>
                     <TabItem
                         id='tab-2'
+                        aria-label='Tab Item - Malvado ou Malvada'
                         active={tab.selectedId === 'tab-2'}
                         {...tab}
                     >
@@ -31,11 +32,17 @@ const Home = () => {
                     </TabItem>
 
                 </Tabs>
-                    <ResultPainel {...tab}>
+                    <ResultPainel
+                        {...tab}
+                        aria-label='Tab Panel - Anjinha Comportada'
+                    >
                         <img src={angel} alt={angel} />
                     </ResultPainel>
                     
-                    <ResultPainel {...tab}>
+                    <ResultPainel 
+                        {...tab}
+                        aria-label='Tab Panel - Diabo Malvado'
+                    >
                         <img src={devil} alt={devil} />
                     </ResultPainel>
             </Content>
